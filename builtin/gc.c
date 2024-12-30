@@ -23,6 +23,7 @@
 #include "lockfile.h"
 #include "parse-options.h"
 #include "run-command.h"
+#include "remote.h"
 #include "sigchain.h"
 #include "strvec.h"
 #include "commit.h"
@@ -916,6 +917,30 @@ static int maintenance_opt_schedule(const struct option *opt, const char *arg,
 	return 0;
 }
 
+static int prune_remote(struct remote *remote, void *cb_data UNUSED)
+{
+	struct child_process child = CHILD_PROCESS_INIT;
+
+	if (!remote->url.nr)
+		return 0;
+
+	child.git_cmd = 1;
+	strvec_pushl(&child.args, "remote", "prune", remote->name, NULL);
+
+	return !!run_command(&child);
+}
+
+static int maintenance_task_prune_remote(struct maintenance_run_opts *opts,
+					 struct gc_config *cfg UNUSED)
+{
+	if (for_each_remote(prune_remote, opts)) {
+		error(_("failed to prune remotes"));
+		return 1;
+	}
+
+	return 0;
+}
+
 /* Remember to update object flag allocation in object.h */
 #define SEEN		(1u<<0)
 
@@ -1378,6 +1403,7 @@ enum maintenance_task_label {
 	TASK_GC,
 	TASK_COMMIT_GRAPH,
 	TASK_PACK_REFS,
+	TASK_PRUNE_REMOTE_REFS,
 
 	/* Leave as final value */
 	TASK__COUNT
@@ -1413,6 +1439,10 @@ static struct maintenance_task tasks[] = {
 		"pack-refs",
 		maintenance_task_pack_refs,
 		pack_refs_condition,
+	},
+	[TASK_PRUNE_REMOTE_REFS] = {
+		"prune-remote-refs",
+		maintenance_task_prune_remote,
 	},
 };
 
@@ -1508,6 +1538,8 @@ static void initialize_maintenance_strategy(void)
 		tasks[TASK_LOOSE_OBJECTS].schedule = SCHEDULE_DAILY;
 		tasks[TASK_PACK_REFS].enabled = 1;
 		tasks[TASK_PACK_REFS].schedule = SCHEDULE_WEEKLY;
+		tasks[TASK_PRUNE_REMOTE_REFS].enabled = 0;
+		tasks[TASK_PRUNE_REMOTE_REFS].schedule = SCHEDULE_DAILY;
 	}
 }
 
