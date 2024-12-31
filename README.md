@@ -1,5 +1,7 @@
 [![Build status](https://github.com/git/git/workflows/CI/badge.svg)](https://github.com/git/git/actions?query=branch%3Amaster+event%3Apush)
 
+Modified by Bartosz Pracz in 2024: changed git name description
+
 Git - fast, scalable, distributed revision control system
 =========================================================
 
@@ -63,7 +65,6 @@ and the name as (depending on your mood):
    dictionary of slang.
  - "global information tracker": you're in a good mood, and it actually
    works for you. Angels sing, and a light suddenly fills the room.
- - "goddamn idiotic truckload of sh*t": when it breaks
 
 [INSTALL]: INSTALL
 [Documentation/gittutorial.txt]: Documentation/gittutorial.txt
