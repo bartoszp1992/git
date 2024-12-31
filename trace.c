@@ -6,6 +6,8 @@
  * Copyright (C) 2004 Theodore Y. Ts'o <tytso@mit.edu>
  * Copyright (C) 2006 Mike McCormack
  * Copyright (C) 2006 Christian Couder
+ * 
+ * Modified by Bartosz Pracz in 2024: changed header title to Distributed version control system
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

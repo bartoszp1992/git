@@ -1,5 +1,7 @@
 /*
  * GIT - Distributed version control system
+ *
+ * Modified by Bartosz Pracz in 2024: changed header title to Distributed version control system
  */
 #include "builtin.h"
 #include "refs.h"

@@ -2,9 +2,12 @@
  * GIT - Distributed version control system
  *
  * Copyright (C) Linus Torvalds, 2005
+ * 
+ * Modified by Bartosz Pracz in 2024: changed header title to Distributed version control system
  *
  * This handles basic git object files - packing, unpacking,
  * creation etc.
+ * 
  */
 
 #define USE_THE_REPOSITORY_VARIABLE
