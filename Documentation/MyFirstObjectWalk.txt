@@ -1,6 +1,6 @@
 /*
 *
-*Modified by Bartosz Pracz in 2024: changed header title to Distributed version control system
+*Modified by Bartosz Pracz in 2025: removed initial commit name
 *
 */
 
@@ -381,8 +381,7 @@ $ ./bin-wrappers/git walken
 ----
 
 You should see all of the subject lines of all the commits in
-your tree's history, in order, ending with the initial commit, "Initial revision
-of "git", Distributed version control system". Congratulations! You've written
+your tree's history, in order, ending with the initial commit. Congratulations! You've written
 your first revision walk. You can play with printing some additional fields
 from each commit if you're curious; have a look at the functions available in
 `commit.h`.
