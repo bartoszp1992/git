@@ -1,6 +1,6 @@
 [![Build status](https://github.com/git/git/workflows/CI/badge.svg)](https://github.com/git/git/actions?query=branch%3Amaster+event%3Apush)
 
-Modified by Bartosz Pracz in 2024: removed git name description
+Modified by Bartosz Pracz in 2025: removed git name description
 
 Git - fast, scalable, distributed revision control system
 =========================================================
